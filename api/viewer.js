@@ -402,10 +402,61 @@ function createTools(conf) {
         areaMeasureCtl
       ]);
     }
+//++++++++++++++++++++++++++++++++++++++++++++++
+ OpenLayers.Control.Click = OpenLayers.Class(
+           OpenLayers.Control, {
+                defaultHandlerOptions: {
+                        'single': true,
+                        'double': false,
+                        'pixelTolerance': 0,
+                        'stopSingle': false,
+                        'stopDouble': false
+                },
+                initialize: function(options) {
+                    this.handlerOptions = OpenLayers.Util.extend(
+                        {}, this.defaultHandlerOptions
+                    );
+                    OpenLayers.Control.prototype.initialize.apply(
+                        this, arguments
+                    );
+                    this.handler = new OpenLayers.Handler.Click(
+                        this, {
+                            'click': this.trigger
+                        }, this.handlerOptions
+                    );
+		},
+                trigger: function(e) {
+                    var lonlat = map.getLonLatFromPixel(e.xy);
+                    var lat = lonlat.lat/100000 +2.5;
+                    var lon = lonlat.lon/100000 +10-3;
+                    alert("Diste click cerca de " + lat + " N, " +
+                                              + lon  + " E");
+                    
+//------------------------------------------------
+  var element, out;
+  element = document.getElementById('measure');
+  out = "<a href='descripcion.php?lt="+ lat + "&ln=" + lon 
++"'>Descripci&oacute;n Aqui</a>";
+  element.innerHTML = out;
+//------------------------------------------------
+                }
+
+            });
+
+      // Hasta aqui proceso
+    map.addControl(panelCtl);
+    var click = new OpenLayers.Control.Click();
+    map.addControl(click);
+    click.activate();
+
+  }
+}
+/*
     map.addControl(panelCtl);
   }
 }
-
+*/
+//++++++++++++++++++++++++++++++++++++++++++++++++++
 /**
  * Remove the ajaxloader image
  */
