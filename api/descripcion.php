@@ -16,8 +16,7 @@
        $qlugar=$qlugar->item(0)->nodeValue;
 
        echo "<br><font size=3em>Dato ".$i.":</font> ".$qlugar."  <br>";
-?>
-          <br><hr>
-<?php
+       echo "<br><hr>";
+	   $i++;
     }
 ?>
