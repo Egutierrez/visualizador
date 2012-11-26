@@ -429,14 +429,14 @@ function createTools(conf) {
                     var lonlat = map.getLonLatFromPixel(e.xy);
                     var lat = lonlat.lat/100000 +2.5;
                     var lon = lonlat.lon/100000 +10-3;
-                    alert("Diste click cerca de " + lat + " N, " +
+/*                    alert("Diste click cerca de " + lat + " N, " +
                                               + lon  + " E");
-                    
+*/                   
 //------------------------------------------------
   var element, out;
   element = document.getElementById('measure');
   out = "<a href='descripcion.php?lt="+ lat + "&ln=" + lon 
-+"'>Descripci&oacute;n Aqui</a>";
++"'>Haga click aqui para ver la informaci&oacute;n</a>";
   element.innerHTML = out;
 //------------------------------------------------
                 }
